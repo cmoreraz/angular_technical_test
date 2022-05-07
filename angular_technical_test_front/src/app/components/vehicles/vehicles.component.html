@@ -1,0 +1,94 @@
+<!--new table-->
+<div class="card bg-light mb-3">
+  <div class="card-header">Buscar</div>
+  <div class="card-body">
+
+    <mat-form-field class="mx-3" style="width: 50%;">
+      <input matInput placeholder="Buscar" (keyup)="filtrar($event.target.value)">
+    </mat-form-field>
+
+    <table mat-table [dataSource]="asignar" class="mat-elevation-z8 mx-3" style="width: 100%;">
+
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef> Id </th>
+        <td mat-cell *matCellDef="let v"> {{v.id}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="nombre">
+        <th mat-header-cell *matHeaderCellDef> Nombre </th>
+        <td mat-cell *matCellDef="let v"> {{v.driverName}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="identificacion">
+        <th mat-header-cell *matHeaderCellDef> Identificacion </th>
+        <td mat-cell *matCellDef="let v"> {{v.driverIdentification}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="placa">
+        <th mat-header-cell *matHeaderCellDef> Placa </th>
+        <td mat-cell *matCellDef="let v"> {{v.placa}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="marca">
+        <th mat-header-cell *matHeaderCellDef> Marca </th>
+        <td mat-cell *matCellDef="let v"> {{v.marca}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="modelo">
+        <th mat-header-cell *matHeaderCellDef> Modelo </th>
+        <td mat-cell *matCellDef="let v"> {{v.model}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="estado">
+        <th mat-header-cell *matHeaderCellDef> Estado </th>
+        <td mat-cell *matCellDef="let v"> {{v.status}} </td>
+      </ng-container>
+
+      <ng-container matColumnDef="createAt">
+        <th mat-header-cell *matHeaderCellDef> Creado en </th>
+        <td mat-cell *matCellDef="let v"> {{v.createAt | date: 'dd - MMM - yyyy'}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="mostrarColumnasVe"></tr>
+      <tr mat-row *matRowDef="let alumno; columns: mostrarColumnasVe;"></tr>
+
+    </table>
+  </div>
+</div>
+
+<div class="card bg-light mb-3">
+    <div class="card-header">{{title}}</div>
+    <div class="card-body">
+
+        <button class="btn btn-primary my-2" routerLink="/vehicles/form">Crear</button>
+
+        <table class="table table-hover table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nombre</th>
+                    <th>Identificacion</th>
+                    <th>Placa</th>
+                    <th>Marca</th>
+                    <th>Modelo</th>
+                    <th>Estado</th>
+                    <th>Creado</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let v of vehicle">
+                    <td>{{v.id}}</td>
+                    <td>{{v.driverName}}</td>
+                    <td>{{v.driverIdentification}}</td>
+                    <td>{{v.placa}}</td>
+                    <td>{{v.marca}}</td>
+                    <td>{{v.model}}</td>
+                    <td>{{v.status}}</td>
+                    <td>{{v.createAt | date: 'dd - MMM - yyyy'}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+  </div>
+
